@@ -1,4 +1,4 @@
-var baseUrl = 'https://comichron-data.github.io';
+var urls = require('comichron-data-urls');
 
 module.exports = {
   titles: titles,
@@ -7,17 +7,15 @@ module.exports = {
 };
 
 function titles(callback) {
-  sendXhr(baseUrl + '/api/titles.json', callback);
+  sendXhr(urls.titles(), callback);
 }
 
 function byMonth(id, callback) {
-  var url = baseUrl + '/api/titles/' + id + '/by-month.json';
-  sendXhr(url, callback);
+  sendXhr(urls.byMonth(id), callback);
 }
 
 function byIssue(id, callback) {
-  var url = baseUrl + '/api/titles/' + id + '/by-issue.json';
-  sendXhr(url, callback);
+  sendXhr(urls.byIssue(id), callback);
 }
 
 function sendXhr(url, callback) {
