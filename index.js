@@ -19,7 +19,7 @@ function byIssue(id, callback) {
   sendXhr(urls.byIssue(id), callback);
 }
 
-function sourceData(year, month) {
+function sourceData(year, month, callback) {
   sendXhr(urls.sourceData(year, month), callback);
 }
 
