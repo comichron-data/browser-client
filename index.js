@@ -34,13 +34,12 @@ function sendXhr(url, callback) {
     }
   });
 
-  req.addEventListener('error', function onError(event) {
-    callback(makeError(req, url, event));
-  });
+  req.addEventListener('error', onFail);
+  req.addEventListener('abort', onFail);
 
-  req.addEventListener('abort', function onAbort(event) {
+  function onFail(event) {
     callback(makeError(req, url, event));
-  });
+  }
 
   req.open('GET', url);
   req.send();
