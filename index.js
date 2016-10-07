@@ -3,7 +3,8 @@ var urls = require('comichron-data-urls');
 module.exports = {
   titles: titles,
   byMonth: byMonth,
-  byIssue: byIssue
+  byIssue: byIssue,
+  sourceData: sourceData
 };
 
 function titles(callback) {
@@ -16,6 +17,10 @@ function byMonth(id, callback) {
 
 function byIssue(id, callback) {
   sendXhr(urls.byIssue(id), callback);
+}
+
+function sourceData(year, month) {
+  sendXhr(urls.sourceData(year, month), callback);
 }
 
 function sendXhr(url, callback) {
