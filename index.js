@@ -7,20 +7,20 @@ module.exports = {
 };
 
 function titles(callback) {
-  makeXhr(baseUrl + '/api/titles.json', callback).send();
+  sendXhr(baseUrl + '/api/titles.json', callback);
 }
 
 function byMonth(id, callback) {
   var url = baseUrl + '/api/titles/' + id + '/by-month.json';
-  makeXhr(url, callback).send();
+  sendXhr(url, callback);
 }
 
 function byIssue(id, callback) {
   var url = baseUrl + '/api/titles/' + id + '/by-issue.json';
-  makeXhr(url, callback).send();
+  sendXhr(url, callback);
 }
 
-function makeXhr(url, callback) {
+function sendXhr(url, callback) {
   var req = new XMLHttpRequest();
 
   req.addEventListener('load', function onLoad(event) {
@@ -43,7 +43,7 @@ function makeXhr(url, callback) {
   });
 
   req.open('GET', url);
-  return req;
+  req.send();
 }
 
 function makeError(req, url, xhrEvent) {
