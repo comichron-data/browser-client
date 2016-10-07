@@ -23,11 +23,11 @@ function byIssue(id, callback) {
 function makeXhr(url, callback) {
   var req = new XMLHttpRequest();
 
-  req.addEventListener('load', function onLoad() {
+  req.addEventListener('load', function onLoad(event) {
     if (req.status == 500) {
-      return callback(makeError(req));
+      return callback(makeError(req, url, event));
     } else if (req.status % 400 < 100) {
-      return callback(makeError(req));
+      return callback(makeError(req, url, event));
     } else {
       var json = JSON.parse(this.responseText);
       return callback(null, json);
@@ -35,13 +35,21 @@ function makeXhr(url, callback) {
   });
 
   req.addEventListener('error', function onError(event) {
-    callback(makeError(req));
+    callback(makeError(req, url, event));
+  });
+
+  req.addEventListener('abort', function onAbort(event) {
+    callback(makeError(req, url, event));
   });
 
   req.open('GET', url);
   return req;
 }
 
-function makeError(req) {
-  return new Error(req.status);
+function makeError(req, url, xhrEvent) {
+  var error = new Error('Unable to GET ' + url);
+  error.statusCode = req.status;
+  error.url = url;
+  error.event = xhrEvent;
+  return error;
 }
