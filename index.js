@@ -24,14 +24,12 @@ function sendXhr(url, callback) {
   var req = new XMLHttpRequest();
 
   req.addEventListener('load', function onLoad(event) {
-    if (req.status == 500) {
-      return callback(makeError(req, url, event));
-    } else if (req.status % 400 < 100) {
-      return callback(makeError(req, url, event));
-    } else {
-      var json = JSON.parse(this.responseText);
-      return callback(null, json);
+    if (req.status >= 400) {
+      return onFail(event);
     }
+
+    var json = JSON.parse(this.responseText);
+    return callback(null, json);
   });
 
   req.addEventListener('error', onFail);
