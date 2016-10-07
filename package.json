@@ -1,15 +1,27 @@
 {
   "name": "comichron-data-browser-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "xhr-based client for https://github.com/comichron-data/api",
   "main": "index.js",
   "scripts": {
     "demo": "webpack-dev-server --content-base demo/ --inline"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {},
+  "keywords": [
+    "comichron-data",
+    "comichron",
+    "comic"
+  ],
+  "author": "Paul Salaets <psalaets@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/comichron-data/browser-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comichron-data/browser-client.git"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
   "dependencies": {
     "comichron-data-urls": "1.0.0"
   }
