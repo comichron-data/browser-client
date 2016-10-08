@@ -27,14 +27,14 @@ Get titles of all comics that have data in the api.
 Get a comic's by-month data.
 
 - id - Comic id from titles response
-- callback - function with signature `function(error, records)` where `error` is non-`null` if there was a failure. On success, `error` will be `null` and `records` will be [json of the by-month response](https://github.com/comichron-data/api#apititlesidby-monthjson).
+- callback - function with signature `function(error, data)` where `error` is non-`null` if there was a failure. On success, `error` will be `null` and `data` will be [json of the by-month response](https://github.com/comichron-data/api#apititlesidby-monthjson).
 
 ### client.byIssue(id, callback)
 
 Get a comic's by-issue data.
 
 - id - Comic id from titles response
-- callback - function with signature `function(error, records)` where `error` is non-`null` if there was a failure. On success, `error` will be `null` and `records` will be [json of the by-issue response](https://github.com/comichron-data/api#apititlesidby-issuejson).
+- callback - function with signature `function(error, data)` where `error` is non-`null` if there was a failure. On success, `error` will be `null` and `data` will be [json of the by-issue response](https://github.com/comichron-data/api#apititlesidby-issuejson).
 
 ### client.sourceData(year, month, callback)
 
