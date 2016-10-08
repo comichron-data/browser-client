@@ -6,16 +6,18 @@ client.titles(function(error, titles) {
   console.log('got ' + titles.length + ' titles');
 });
 
-client.byMonth('shutter-image', function(error, records) {
+client.byMonth('shutter-image', function(error, data) {
   if (error) return console.error(error);
 
-  console.log('got ' + records.length + ' by-month records for shutter');
+  var records = data.records;
+  console.log('got ' + records.length + ' by-month records for ' + data.title);
 });
 
-client.byIssue('saga-image', function(error, records) {
+client.byIssue('saga-image', function(error, data) {
   if (error) return console.error(error);
 
-  console.log('got ' + records.length + ' by-issue records for saga');
+  var records = data.records;
+  console.log('got ' + records.length + ' by-issue records for ' + data.title);
 });
 
 client.sourceData(2010, 5, function(error, sourceRecords) {
